@@ -2,12 +2,21 @@ import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
 import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
+import CustomButton from '../../components/custom/button/CustomButton'
 
 const SignIn = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const { height } = useWindowDimensions();
+
+    const onSignInPress = () => {
+        console.warn('I am here..!');
+    }
+
+    const onForgetPasswordPressed = () => {
+        console.warn('on Forget Password Pressed..!');
+    }
     
     return (
         <View style={styles.container}>
@@ -16,8 +25,20 @@ const SignIn = () => {
                 style={[styles.logo, {height: height * 0.3}]}
                 resizeMode='contain'
             />
-            <CustomInput placeholder="UserName" value={username} setValue={setUserName} />
-            <CustomInput placeholder="Password" value={password}setValue={setPassword} /> 
+            <CustomInput 
+                    placeholder="UserName" 
+                    value={username} 
+                    setValue={setUserName} 
+            />
+            <CustomInput 
+                placeholder="Password" 
+                value={password}
+                setValue={setPassword} 
+                secureTextEntry={ true }
+            /> 
+
+            <CustomButton onPress={onSignInPress} text="Sign In"  />
+            <CustomButton onPress={onForgetPasswordPressed} text="Forget Password?" />
         </View>
     )
 }
