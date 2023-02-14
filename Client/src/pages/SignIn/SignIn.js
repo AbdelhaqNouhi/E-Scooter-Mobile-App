@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView} from 'react-native'
 import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
@@ -17,8 +17,21 @@ const SignIn = () => {
     const onForgetPasswordPressed = () => {
         console.warn('on Forget Password Pressed..!');
     }
+
+    const onSignInFacebook = () => {
+        console.warn('On SignIn with Facebook..!');
+    }
+
+    const onSignInGoogle = () => {
+        console.warn('On SignIn with Google..!');
+    }
+
+    const onSignUpPress = () => {
+        console.warn('On Sign Up Pressed..!');
+    }
     
     return (
+        <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <Image 
                 source={ logo } 
@@ -37,9 +50,34 @@ const SignIn = () => {
                 secureTextEntry={ true }
             /> 
 
-            <CustomButton onPress={onSignInPress} text="Sign In"  />
-            <CustomButton onPress={onForgetPasswordPressed} text="Forget Password?" />
+            <CustomButton 
+                onPress={onSignInPress} 
+                text="Sign In"  
+            />
+            <CustomButton 
+                onPress={onForgetPasswordPressed} 
+                text="Forget Password?" 
+                type={"TERTIARY"}
+            />
+            <CustomButton
+                onPress={onSignInFacebook}
+                text="Sign In with Facebook"
+                bgColor="#E7EAF4"
+                TextColor="#4765A9"
+            />
+            <CustomButton
+                onPress={onSignInGoogle}
+                text="Sign In with Google"
+                bgColor="#FAE9EA"
+                TextColor="#DD4D44"
+            />
+            <CustomButton
+                onPress={onSignUpPress}
+                text="Don't have an account? Create One"
+                type={"TERTIARY"}
+            />
         </View>
+        </ScrollView>
     )
 }
 
