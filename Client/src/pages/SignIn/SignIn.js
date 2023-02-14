@@ -65,17 +65,7 @@ const SignIn = () => {
                 bgColor="#E7EAF4"
                 TextColor="#4765A9"
             />
-            <CustomButton
-                onPress={onSignInGoogle}
-                text="Sign In with Google"
-                bgColor="#FAE9EA"
-                TextColor="#DD4D44"
-            />
-            <CustomButton
-                onPress={onSignUpPress}
-                text="Don't have an account? Create One"
-                type={"TERTIARY"}
-            />
+            
         </View>
         </ScrollView>
     )
