@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions, TextInput } from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
 import logo from '../../../assets/images/electric-scooter.png'
+import CustomInput from '../../components/custom/input/CustomInput'
 
 const SignIn = () => {
     const { height } = useWindowDimensions();
@@ -11,8 +12,7 @@ const SignIn = () => {
                 style={[styles.logo, {height: height * 0.3}]}
                 resizeMode='contain'
             />
-            <TextInput style={styles.email} placeholder='E-mail' />
-            <TextInput style={styles.password} placeholder='Password' />
+            <CustomInput />
         </View>
     )
 }
