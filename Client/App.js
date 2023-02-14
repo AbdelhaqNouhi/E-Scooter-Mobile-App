@@ -12,7 +12,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F9EBFC',
+    backgroundColor: '#F9FBFC',
     flex: 1,
   }
 })

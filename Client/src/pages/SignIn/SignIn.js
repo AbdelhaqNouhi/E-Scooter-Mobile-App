@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
-import logo from '../../../assets/images/electric-scooter.png'
+import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
 
 const SignIn = () => {
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+
     const { height } = useWindowDimensions();
+    
     return (
         <View style={styles.container}>
             <Image 
@@ -12,7 +16,8 @@ const SignIn = () => {
                 style={[styles.logo, {height: height * 0.3}]}
                 resizeMode='contain'
             />
-            <CustomInput />
+            <CustomInput placeholder="UserName" value={username} setValue={setUserName} />
+            <CustomInput placeholder="Password" value={password}setValue={setPassword} /> 
         </View>
     )
 }
