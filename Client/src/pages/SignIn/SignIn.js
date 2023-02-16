@@ -4,12 +4,14 @@ import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
 import SocialButton from '../../components/custom/SocialButton/SocialButton'
+import { useNavigation } from '@react-navigation/native'
 
 const SignIn = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const { height } = useWindowDimensions();
+    const navigations = useNavigation();
 
     const onSignInPress = () => {
         console.warn('I am here..!');
@@ -20,7 +22,7 @@ const SignIn = () => {
     }
 
     const onSignUpPress = () => {
-        console.warn('On Sign Up Pressed..!');
+        navigations.navegate('SignUp')
     }
     
     return (
