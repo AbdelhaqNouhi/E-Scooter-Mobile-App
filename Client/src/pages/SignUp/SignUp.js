@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, useWindowDimensions, ScrollView} from 'react-native'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
-import SocialButton from '../../components/customSocialButton/SocialButton'
+import SocialButton from '../../components/custom/SocialButton/SocialButton'
 
 const SignUp = () => {
     const [username, setUserName] = useState('');

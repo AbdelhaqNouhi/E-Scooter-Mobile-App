@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView} from 'r
 import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
-import SocialButton from '../../components/customSocialButton/SocialButton'
+import SocialButton from '../../components/custom/SocialButton/SocialButton'
 
 const SignIn = () => {
     const [username, setUserName] = useState('');

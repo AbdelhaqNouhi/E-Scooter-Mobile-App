@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import CustomButton from '../custom/button/CustomButton'
+import CustomButton from '../button/CustomButton'
 
 const SocialButton = () => {
     
