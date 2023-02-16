@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, useWindowDimensions, ScrollView} from 'react-native'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
+import SocialButton from '../../components/customSocialButton/SocialButton'
 
 const SignUp = () => {
     const [username, setUserName] = useState('');
@@ -15,12 +16,8 @@ const SignUp = () => {
         console.warn('I am here..!');
     }
 
-    const onSignInFacebook = () => {
-        console.warn('On SignIn with Facebook..!');
-    }
-
-    const onSignInGoogle = () => {
-        console.warn('On SignIn with Google..!');
+    const onSignInPress = () => {
+        console.warn('I am here..!');
     }
     
     return (
@@ -49,29 +46,19 @@ const SignUp = () => {
                 setValue={setPasswordRepeat}
                 secureTextEntry={true}
             />
-
             <CustomButton 
                 onPress={onRegisterPressed} 
                 text="Register"  
             />
-                <Text style={styles.text}> By registering, you confirm that you accept our{' '} <Text style={styles.link}>terms of Use</Text> and {' '}
+            <Text style={styles.text}> By registering, you confirm that you accept our{' '} <Text style={styles.link}>terms of Use</Text> and {' '}
                 <Text style={styles.link}>Privacy Policy</Text>
             </Text>
+
+            <SocialButton />
+
             <CustomButton
-                onPress={onSignInFacebook}
-                text="Sign In with Facebook"
-                bgColor="#E7EAF4"
-                TextColor="#4765A9"
-            />
-            <CustomButton
-                onPress={onSignInGoogle}
-                text="Sign In with Google"
-                bgColor="#FAE9EA"
-                TextColor="#DD4D44"
-            />
-            <CustomButton
-                onPress={onSignUpPress}
-                text="Don't have an account? Create One"
+                onPress={onSignInPress}
+                text="Have an account? Sign In"
                 type={"TERTIARY"}
             />
         </View>

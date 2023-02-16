@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView} from 'r
 import logo from '../../assets/images/electric-scooter.png'
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
+import SocialButton from '../../components/customSocialButton/SocialButton'
 
 const SignIn = () => {
     const [username, setUserName] = useState('');
@@ -16,14 +17,6 @@ const SignIn = () => {
 
     const onForgetPasswordPressed = () => {
         console.warn('on Forget Password Pressed..!');
-    }
-
-    const onSignInFacebook = () => {
-        console.warn('On SignIn with Facebook..!');
-    }
-
-    const onSignInGoogle = () => {
-        console.warn('On SignIn with Google..!');
     }
 
     const onSignUpPress = () => {
@@ -59,18 +52,9 @@ const SignIn = () => {
                 text="Forget Password?" 
                 type={"TERTIARY"}
             />
-            <CustomButton
-                onPress={onSignInFacebook}
-                text="Sign In with Facebook"
-                bgColor="#E7EAF4"
-                TextColor="#4765A9"
-            />
-            <CustomButton
-                onPress={onSignInGoogle}
-                text="Sign In with Google"
-                bgColor="#FAE9EA"
-                TextColor="#DD4D44"
-            />
+
+            <SocialButton />
+            
             <CustomButton
                 onPress={onSignUpPress}
                 text="Don't have an account? Create One"
