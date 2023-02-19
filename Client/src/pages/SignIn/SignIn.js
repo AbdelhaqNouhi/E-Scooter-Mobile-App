@@ -11,7 +11,8 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
 
     const { height } = useWindowDimensions();
-    const navigations = useNavigation();
+    const navigation = useNavigation();
+
 
     const onSignInPress = () => {
         console.warn('I am here..!');
@@ -22,7 +23,13 @@ const SignIn = () => {
     }
 
     const onSignUpPress = () => {
-        navigations.navegate('SignUp')
+        console.warn('on Sign Up Pressed..!');
+        navigation.navigate('SignUp');
+    }
+
+    const Home = () => {
+        console.warn('home page');
+        navigation.navigate('Home')
     }
     
     return (
@@ -61,6 +68,10 @@ const SignIn = () => {
                 onPress={onSignUpPress}
                 text="Don't have an account? Create One"
                 type={"TERTIARY"}
+            />
+            <CustomButton 
+                onPress={Home} 
+                text="Go to Home"  
             />
         </View>
         </ScrollView>

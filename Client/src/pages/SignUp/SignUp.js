@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, useWindowDimensions, ScrollView} from 'react-na
 import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
 import SocialButton from '../../components/custom/SocialButton/SocialButton'
+import { useNavigation } from '@react-navigation/native'
 
 const SignUp = () => {
     const [username, setUserName] = useState('');
@@ -11,6 +12,7 @@ const SignUp = () => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
 
     const { height } = useWindowDimensions();
+    const navigation = useNavigation();
 
     const onRegisterPressed = () => {
         console.warn('I am here..!');
@@ -18,6 +20,7 @@ const SignUp = () => {
 
     const onSignInPress = () => {
         console.warn('I am here..!');
+        navigation.navigate('SignIn');
     }
     
     return (
