@@ -4,22 +4,35 @@ import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
 import SocialButton from '../../components/custom/SocialButton/SocialButton'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
 
 const SignUp = () => {
-    const [username, setUserName] = useState('');
+    const [full_name, setFull_Name] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState('');
 
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
 
     const onRegisterPressed = () => {
-        console.warn('I am here..!');
+        fetch('http://localhost:3000/api/RegisterUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                full_name: full_name,
+                email: email,
+                password: password
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.warn(data);
+        })
     }
 
     const onSignInPress = () => {
-        console.warn('I am here..!');
         navigation.navigate('SignIn');
     }
     
@@ -29,8 +42,8 @@ const SignUp = () => {
             <Text style={styles.title}>Create an account !!</Text>
             <CustomInput 
                 placeholder="UserName" 
-                value={username} 
-                setValue={setUserName} 
+                value={full_name} 
+                setValue={setFull_Name} 
             />
             <CustomInput
                 placeholder="E-mail"
@@ -43,12 +56,6 @@ const SignUp = () => {
                 setValue={setPassword} 
                 secureTextEntry={ true }
             /> 
-            <CustomInput
-                placeholder="Repeat Password"
-                value={passwordRepeat}
-                setValue={setPasswordRepeat}
-                secureTextEntry={true}
-            />
             <CustomButton 
                 onPress={onRegisterPressed} 
                 text="Register"  

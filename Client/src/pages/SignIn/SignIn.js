@@ -7,7 +7,7 @@ import SocialButton from '../../components/custom/SocialButton/SocialButton'
 import { useNavigation } from '@react-navigation/native'
 
 const SignIn = () => {
-    const [username, setUserName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const { height } = useWindowDimensions();
@@ -15,7 +15,20 @@ const SignIn = () => {
 
 
     const onSignInPress = () => {
-        console.warn('I am here..!');
+        fetch('http://localhost:3000/api/LoginUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.warn(data);
+        })
     }
 
     const onForgetPasswordPressed = () => {
@@ -42,8 +55,8 @@ const SignIn = () => {
             />
             <CustomInput 
                     placeholder="UserName" 
-                    value={username} 
-                    setValue={setUserName} 
+                    value={email}
+                    setValue={setEmail} 
             />
             <CustomInput 
                 placeholder="Password" 
