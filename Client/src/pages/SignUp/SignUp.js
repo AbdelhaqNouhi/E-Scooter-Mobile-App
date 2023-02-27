@@ -14,22 +14,26 @@ const SignUp = () => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
 
-    const onRegisterPressed = () => {
-        fetch('http://localhost:3000/api/RegisterUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                full_name: full_name,
-                email: email,
-                password: password
+    const onRegisterPressed = async (e) => {
+
+        e.preventDefault();
+        const data = { full_name, email, password };
+
+        await fetch("http://192.168.9.21:3000/api/RegisterUser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    console.log(data);
+                    navigation.navigate('SignIn')
+                }
             })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.warn(data);
-        })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     const onSignInPress = () => {
@@ -41,7 +45,7 @@ const SignUp = () => {
         <View style={styles.container}>
             <Text style={styles.title}>Create an account !!</Text>
             <CustomInput 
-                placeholder="UserName" 
+                placeholder="Full Name" 
                 value={full_name} 
                 setValue={setFull_Name} 
             />

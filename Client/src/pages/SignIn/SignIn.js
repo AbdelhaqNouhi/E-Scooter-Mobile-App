@@ -5,30 +5,35 @@ import CustomInput from '../../components/custom/input/CustomInput'
 import CustomButton from '../../components/custom/button/CustomButton'
 import SocialButton from '../../components/custom/SocialButton/SocialButton'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
 
 const SignIn = () => {
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
 
 
-    const onSignInPress = () => {
-        fetch('http://localhost:3000/api/LoginUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
+    const onSignInPress = async (e) => {
+        e.preventDefault();
+        const User = { email, password };
+
+        await fetch("http://192.168.9.21:3000/api/LoginUser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(User)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    console.log(data);
+                    navigation.navigate('Home')
+                }
             })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.warn(data);
-        })
+            .catch((err) => console.log(err));
     }
 
     const onForgetPasswordPressed = () => {
@@ -38,11 +43,6 @@ const SignIn = () => {
     const onSignUpPress = () => {
         console.warn('on Sign Up Pressed..!');
         navigation.navigate('SignUp');
-    }
-
-    const Home = () => {
-        console.warn('home page');
-        navigation.navigate('Home')
     }
     
     return (
@@ -54,14 +54,14 @@ const SignIn = () => {
                 resizeMode='contain'
             />
             <CustomInput 
-                    placeholder="UserName" 
-                    value={email}
-                    setValue={setEmail} 
+                value={email}
+                setValue={setEmail}
+                placeholder="E-mail" 
             />
-            <CustomInput 
-                placeholder="Password" 
+            <CustomInput
                 value={password}
-                setValue={setPassword} 
+                setValue={setPassword}
+                placeholder="Password" 
                 secureTextEntry={ true }
             /> 
 
@@ -81,10 +81,6 @@ const SignIn = () => {
                 onPress={onSignUpPress}
                 text="Don't have an account? Create One"
                 type={"TERTIARY"}
-            />
-            <CustomButton 
-                onPress={Home} 
-                text="Go to Home"  
             />
         </View>
         </ScrollView>
